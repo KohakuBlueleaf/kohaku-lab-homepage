@@ -1,8 +1,11 @@
 ---
+// src/pages/index.astro
+// Modified for Kohaku Lab
+
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
+// import Note from '~/components/widgets/Note.astro'; // Removed the generic Note for now
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -12,126 +15,121 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+// Updated metadata for Kohaku Lab
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
-  ignoreTitleTemplate: true,
+  title: 'Kohaku Lab - Pioneering AI Research and Development',
+  ignoreTitleTemplate: true, // Set to false if you want "Kohaku Lab - ..." using the template from config.yaml
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Explore Research',
+        href: '#what-we-do', // Link to the repurposed Features section
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Meet the Team', href: '#members' }, // Link to the repurposed Components section
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Kohaku Lab Abstract AI Representation' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 5.0</span> + Tailwind CSS
+      Welcome to <span class="text-accent dark:text-white highlight">Kohaku Lab</span>
+      <br />
+      <span class="hidden xl:inline">Shaping the Future with Artificial Intelligence</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      <span class="font-semibold">Kohaku Lab</span> pioneers cutting-edge research and development in
+      AI, focusing on creating intelligent systems that solve real-world problems and drive innovation
+      across industries.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <!-- Removed Note Widget -->
+  <!-- <Note /> -->
 
-  <Note />
-
-  <!-- Features Widget *************** -->
-
+  <!-- Features Widget (Repurposed as "What We Are Doing") *************** -->
   <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    id="what-we-do"
+    tagline="Research Areas"
+    title="What We Are Doing"
+    subtitle="Our research pushes the boundaries of AI, exploring fundamental questions and developing practical applications."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Natural Language Processing',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Developing advanced models for understanding, generating, and interacting with human language at scale.',
+        icon: 'tabler:language', // Changed icon
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Computer Vision',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Creating systems that can interpret and understand visual information from the world around us, from images to video.',
+        icon: 'tabler:camera', // Changed icon
       },
       {
-        title: 'Best Practices',
+        title: 'Reinforcement Learning',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'Training intelligent agents to make optimal decisions in complex environments through trial and error.',
+        icon: 'tabler:robot', // Changed icon
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'AI Ethics & Safety',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+          'Investigating the societal implications of AI and developing frameworks for responsible and safe deployment.',
+        icon: 'tabler:shield-check', // Changed icon
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Machine Learning Theory',
         description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+          'Exploring the fundamental mathematical and statistical principles underlying machine learning algorithms.',
+        icon: 'tabler:calculator', // Changed icon
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'AI for Scientific Discovery',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'Applying AI techniques to accelerate research and discovery in fields like biology, physics, and materials science.',
+        icon: 'tabler:atom-2', // Changed icon
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
+  <!-- Content Widget (Repurposed as "Project Introduction 1") **************** -->
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="Featured Project"
+    title="Project 'Amber': Next-Generation Language Understanding"
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Core Goal',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'To create AI models capable of nuanced, context-aware language comprehension surpassing current benchmarks.',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Methodology',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Utilizing novel transformer architectures and large-scale, diverse datasets for pre-training and fine-tuning.',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Current Status',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'Achieved state-of-the-art results on several key NLP tasks. Preparing for open-source release.',
       },
     ]}
     image={{
+      // Keeping default image as requested
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      alt: 'Project Amber Concept Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Advancing NLP Frontiers
+      </h3>
+      Project Amber aims to revolutionize how machines understand and interact using human language.
     </Fragment>
 
     <Fragment slot="bg">
@@ -139,172 +137,125 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
+  <!-- Content Widget (Repurposed as "Our Approach") **************** -->
   <Content
     isAfterContent
     items={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        title: 'Collaborative Environment',
+        description: `We foster a deeply collaborative atmosphere where researchers from diverse backgrounds share ideas freely.`,
       },
       {
-        title: 'Multiple layout possibilities',
+        title: 'Rigorous Methodology',
         description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+          'Our research is grounded in scientific rigor, emphasizing reproducibility and thorough evaluation.',
       },
       {
-        title: 'Fully responsive design',
+        title: 'Open Research',
         description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+          'We believe in sharing our findings and code with the broader community whenever possible to accelerate progress.',
       },
       {
-        title: 'Integration of media',
+        title: 'Ethical Considerations',
         description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+          'Ethical implications are considered at every stage of the research and development process.',
       },
     ]}
     image={{
+      // Keeping default image as requested
       src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
+      alt: 'Kohaku Lab Collaborative Environment',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Our Research Philosophy
+      </h3>
+      Discover the principles that guide our work at Kohaku Lab.
+    </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Removed the third Content Widget for brevity -->
 
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
+  <!-- Steps Widget (Repurposed as "Our Research Process") ****************** -->
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Our Research Process"
+    subtitle="A glimpse into how we approach innovation at Kohaku Lab."
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: <span class="font-medium">Ideation & Exploration</span>',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          'Identifying challenging problems and exploring potential AI-driven solutions through literature review and brainstorming.',
+        icon: 'tabler:bulb', // Changed icon
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
+        title: 'Step 2: <span class="font-medium">Prototyping & Experimentation</span>',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+          'Building initial models and conducting rigorous experiments to validate hypotheses and measure performance.',
+        icon: 'tabler:flask', // Changed icon
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: <span class="font-medium">Analysis & Iteration</span>',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'Analyzing results, identifying areas for improvement, and iterating on models and approaches based on findings.',
+        icon: 'tabler:analyze', // Changed icon
       },
       {
-        title: 'Ready!',
-        icon: 'tabler:check',
+        title: 'Step 4: <span class="font-medium">Publication & Deployment</span>',
+        description:
+          'Sharing findings through publications and potentially deploying successful models for real-world impact.',
+        icon: 'tabler:upload', // Changed icon
       },
     ]}
     image={{
+      // Keeping default image as requested
       src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      alt: 'Research Process illustration',
     }}
   />
 
-  <!-- Features2 Widget ************** -->
-
+  <!-- Features2 Widget (Repurposed as "Members") ************** -->
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    id="members"
+    title="Meet the Team"
+    subtitle="The brilliant minds driving innovation at Kohaku Lab."
+    tagline="Members"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
+        title: 'Dr. Evelyn Reed',
+        description: 'Lead Researcher - NLP Division', // Placeholder
+        icon: 'tabler:user-circle', // Changed icon
       },
       {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
+        title: 'Kenji Tanaka',
+        description: 'Senior AI Engineer - Computer Vision', // Placeholder
+        icon: 'tabler:user-circle', // Changed icon
       },
       {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
+        title: 'Dr. Anya Sharma',
+        description: 'Research Scientist - Reinforcement Learning', // Placeholder
+        icon: 'tabler:user-circle', // Changed icon
       },
       {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
+        title: 'Ben Carter',
+        description: 'Machine Learning Engineer', // Placeholder
+        icon: 'tabler:user-circle', // Changed icon
       },
       {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
+        title: 'Chloe Dubois',
+        description: 'AI Ethics Researcher', // Placeholder
+        icon: 'tabler:user-circle', // Changed icon
       },
       {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
+        title: 'You?',
+        description: 'We are always looking for talented individuals. Join us!', // Placeholder call to action
+        icon: 'tabler:user-plus', // Changed icon
       },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
+      // Add more members as needed
     ]}
   >
     <Fragment slot="bg">
@@ -312,88 +263,84 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
-
+  <!-- HighlightedPosts Widget (Optional: Keep if lab has news/blog) ******* -->
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    title="Latest News & Insights from Kohaku Lab"
+    information={`Stay updated with our recent publications, breakthroughs, and thoughts on the evolving landscape of Artificial Intelligence.`}
   />
 
   <!-- FAQs Widget ******************* -->
-
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle="Answers to common questions about Kohaku Lab, our research, and collaboration opportunities."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
+        title: 'What is the primary focus of Kohaku Lab?',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          'Kohaku Lab focuses on fundamental and applied research in Artificial Intelligence, including areas like NLP, Computer Vision, Reinforcement Learning, and AI Ethics.',
       },
       {
-        title: 'What do I need to start?',
+        title: 'How is Kohaku Lab funded?',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          'Our research is supported by a combination of institutional funding, research grants, and industry collaborations. (Modify as appropriate)',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: 'Are there opportunities for collaboration?',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          'Yes, we are open to collaborations with academic institutions and industry partners. Please reach out via our contact page to discuss potential projects.',
       },
       {
-        title: "What's something that you don't understand?",
+        title: 'Do you offer internships or positions?',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+          "We periodically have openings for researchers, engineers, and interns. Please check our 'Careers' or 'Join Us' page for current opportunities. (You'll need to create this page)",
       },
       {
-        title: 'What is something that you would like to try again?',
+        title: 'What tools and frameworks do you primarily use?',
         description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+          'Our teams utilize a variety of tools, including Python, PyTorch, TensorFlow, JAX, and high-performance computing clusters, depending on the project needs.',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
+        title: 'How can I stay updated on your research?',
         description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          'Follow our blog/news section, subscribe to our newsletter (if applicable), or check our publications page for the latest updates.',
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
-
+  <!-- Stats Widget (Updated for Lab Metrics) ****************** -->
   <Stats
+    title="Kohaku Lab by the Numbers"
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Publications', amount: '50+' }, // Placeholder
+      { title: 'Active Projects', amount: '12' }, // Placeholder
+      { title: 'Team Members', amount: '25' }, // Placeholder
+      { title: 'Citations', amount: '2.1K' }, // Placeholder
     ]}
   />
 
   <!-- CallToAction Widget *********** -->
-
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Collaborate With Us',
+        href: '/contact', // Assuming you have a contact page
+      },
+      {
+        variant: 'secondary',
+        text: 'Explore Publications',
+        href: '/publications', // Assuming you create a publications page
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Advance the Frontier of AI <br class="block sm:hidden" /> with Kohaku Lab
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Interested in collaborating, joining our team, or learning more about our work? Get in touch!
     </Fragment>
   </CallToAction>
 </Layout>

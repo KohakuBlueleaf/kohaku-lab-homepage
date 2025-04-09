@@ -1,183 +1,137 @@
+// src/navigation.ts
+// Modified for Kohaku Lab
+
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
+// Header Navigation Data
 export const headerData = {
+  // Main navigation links
   links: [
+    // Simple link example
     {
-      text: 'Homes',
+      text: 'About',
+      href: getPermalink('/about'), // Links to the /about page
+    },
+    // Dropdown menu example for Research section
+    {
+      text: 'Research',
       links: [
+        // Link to the main project listing page
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
+          text: 'Projects',
+          href: getPermalink('/research/projects'),
         },
+        // Link to the main publications listing page
         {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
+          text: 'Publications',
+          href: getPermalink('/research/publications'),
         },
-        {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
+        // You could add a link to a Research Overview page here if you create one:
+        // {
+        //   text: 'Overview',
+        //   href: getPermalink('/research'),
+        // },
       ],
     },
+    // Simple link example
     {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+      text: 'Team',
+      href: getPermalink('/team'), // Links to the /team page
     },
+    // Simple link example
     {
-      text: 'Landing',
-      links: [
-        {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
-      ],
+      text: 'Join Us',
+      href: getPermalink('/join-us'), // Links to the /join-us or /careers page
     },
+    // Simple link example - using the blog system for news
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
+      // Assuming you set the blog pathname to 'news' in config.yaml
+      text: 'News',
+      href: getBlogPermalink('news'), // Use getBlogPermalink if using the blog system
     },
+    // Simple link example
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'Contact',
+      href: getPermalink('/contact'), // Links to the /contact page
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+
+  // Action buttons in the header
+  actions: [
+    // Example: A prominent "Contact Us" button
+    {
+      text: 'Contact Us',
+      href: getPermalink('/contact'),
+      // variant: 'primary' // Optional: make it stand out
+    },
+    // Remove or replace the template's default "Download" button
+    // { text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }
+  ],
 };
 
+// Footer Navigation Data
 export const footerData = {
+  // Footer link sections
   links: [
+    // Example section 1: Quick Links
     {
-      title: 'Product',
+      title: 'Kohaku Lab',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'About', href: getPermalink('/about') },
+        { text: 'Team', href: getPermalink('/team') },
+        { text: 'Join Us', href: getPermalink('/join-us') },
+        { text: 'Contact', href: getPermalink('/contact') },
       ],
     },
+    // Example section 2: Research Focus
     {
-      title: 'Platform',
+      title: 'Research',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Projects', href: getPermalink('/research/projects') },
+        { text: 'Publications', href: getPermalink('/research/publications') },
+        // Add links to specific research areas if desired
+        // { text: 'Natural Language Processing', href: '#' },
+        // { text: 'Computer Vision', href: '#' },
       ],
     },
+    // Example section 3: Stay Updated
     {
-      title: 'Support',
+      title: 'Updates',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: 'News', href: getBlogPermalink('news') }, // Adjust 'news' if pathname differs
+        // Add other update links like events if applicable
       ],
     },
-    {
-      title: 'Company',
-      links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
-      ],
-    },
+    // Example section 4: Resources (Optional)
+    // {
+    //   title: 'Resources',
+    //   links: [
+    //     { text: 'Tools', href: '#' },
+    //     { text: 'Datasets', href: '#' },
+    //   ],
+    // },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+
+  // Secondary links like Privacy Policy, Terms
+  // secondaryLinks: [
+  //   { text: 'Terms', href: getPermalink('/terms') },
+  //   { text: 'Privacy Policy', href: getPermalink('/privacy') },
+  // ],
+
+  // Social media links - **UPDATE THESE WITH YOUR LAB'S ACTUAL LINKS**
   socialLinks: [
+    // Example: Twitter/X (replace '#' with actual URL)
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    // Example: LinkedIn (replace '#' with actual URL)
+    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
+    // Example: GitHub (replace '#' with actual URL if lab has public repos)
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: '#' },
+    // RSS Feed for News section (uses blog system)
+    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') }, // Keep if using blog for news
   ],
+
+  // Footer footnote - **UPDATE THIS**
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    © ${new Date().getFullYear()} Kohaku Lab · All rights reserved.
   `,
 };

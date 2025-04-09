@@ -1,0 +1,64 @@
+---
+// src/pages/join-us.astro
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Content from '~/components/widgets/Content.astro'; // Example widget
+
+const metadata = {
+  title: 'Join Us - Kohaku Lab',
+  description: 'Explore career opportunities and join our team of innovators at Kohaku Lab.',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Careers"
+    title="Join Our Team at Kohaku Lab"
+    subtitle="We are looking for passionate individuals to help shape the future of AI."
+  />
+
+  <!-- Content Section for Culture/Openings -->
+  <Content
+    title="Why Work With Us?"
+    subtitle="Become part of a collaborative and stimulating research environment."
+    items={[
+      {
+        title: 'Impactful Research',
+        description:
+          'Work on projects that push the boundaries of AI and address significant challenges.',
+      },
+      {
+        title: 'Collaborative Culture',
+        description:
+          'Join a diverse team of experts fostering open discussion and shared learning.',
+      },
+      {
+        title: 'Growth Opportunities',
+        description: 'Develop your skills and expertise in a supportive and dynamic setting.',
+      },
+    ]}
+    image={{ src: '~/assets/images/content-image.avif', alt: 'Team collaboration at Kohaku Lab' }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Current Openings
+      </h3>
+      <p class="text-muted dark:text-slate-400 mb-4">
+        We are currently seeking talented individuals for the following roles:
+      </p>
+      {/* **REPLACE WITH ACTUAL JOB LISTINGS OR A LINK TO A JOB BOARD** */}
+      <ul class="list-disc list-inside space-y-2 mb-4">
+        <li>Research Scientist - NLP (PhD Required)</li>
+        <li>Machine Learning Engineer - Computer Vision</li>
+        <li>Postdoctoral Researcher - AI Ethics</li>
+        <li>PhD Internships - Summer 2025</li>
+      </ul>
+      <p>
+        Interested candidates should send their CV and a cover letter to [careers@kohaku-lab.org] {
+          /* **UPDATE EMAIL** */
+        }
+        or apply through [Link to Application Portal, if any].
+      </p>
+    </Fragment>
+  </Content>
+</Layout>

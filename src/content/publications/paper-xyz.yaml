@@ -1,0 +1,8 @@
+title: 'Context-Aware Transformers for Nuanced Comprehension'
+authors: ['Dr. Evelyn Reed', 'Kenji Tanaka', 'Dr. Anya Sharma']
+journal: 'Journal of Artificial Intelligence Research (JAIR)'
+publishDate: 2024-03-15 # Use YYYY-MM-DD format
+url: 'https://doi.org/YOUR_DOI_HERE' # **REPLACE URL**
+excerpt: 'This paper introduces a novel transformer architecture incorporating external knowledge graphs...'
+# relatedProjects:
+#  - project-amber # Slug of the project in the projects collection

@@ -1,0 +1,52 @@
+---
+// src/pages/team.astro
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro'; // Example widget for listing
+
+const metadata = {
+  title: 'Our Team - Kohaku Lab',
+  description: 'Meet the researchers, engineers, and staff driving innovation at Kohaku Lab.',
+};
+
+// Placeholder Team Data - Replace with your actual team members
+// You'll likely fetch this from a content collection or define it here/import it
+const teamMembers = [
+  {
+    title: 'Dr. Evelyn Reed',
+    description: 'Lead Researcher - NLP Division',
+    icon: 'tabler:user-circle',
+  },
+  {
+    title: 'Kenji Tanaka',
+    description: 'Senior AI Engineer - Computer Vision',
+    icon: 'tabler:user-circle',
+  },
+  {
+    title: 'Dr. Anya Sharma',
+    description: 'Research Scientist - Reinforcement Learning',
+    icon: 'tabler:user-circle',
+  },
+  // Add more members...
+];
+---
+
+<Layout metadata={metadata}>
+  <HeroText tagline="Team" title="Meet the Minds Behind Kohaku Lab" />
+
+  <!-- Team Listing Section -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <Features2
+      columns={3}
+      items={teamMembers}
+      classes={{
+        container: 'max-w-6xl mx-auto',
+        panel: 'text-center p-6 rounded-md shadow-lg dark:bg-slate-800', // Example styling
+        title: 'text-lg font-semibold',
+        description: 'text-sm text-muted dark:text-slate-400',
+        icon: 'w-16 h-16 mx-auto mb-4 text-primary', // Example icon styling
+      }}
+    />
+    <!-- Add more details, sections, or link to individual profiles if needed -->
+  </section>
+</Layout>

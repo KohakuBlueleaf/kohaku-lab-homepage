@@ -1,79 +1,84 @@
 ---
+// src/pages/contact.astro
+// Modified for static contact info
+
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+// Removed ContactUs import: import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro'; // Using Features2 to list contact info
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contact Kohaku Lab',
+  description:
+    'Get in touch with Kohaku Lab. Find our email, address, and other contact information.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <!-- HeroText Widget: Title for the page -->
+  <HeroText
+    tagline="Contact Us"
+    title="Get in Touch with Kohaku Lab"
+    subtitle="We welcome inquiries regarding research collaborations, potential opportunities, or general questions about our work."
+  />
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
+  <!-- REMOVED the ContactUs Widget that contained the form -->
+  <!--
   <ContactUs
     id="form"
     title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
+    ... inputs, textarea, etc ...
   />
+  -->
 
-  <!-- Features2 Widget ************** -->
-
+  <!-- Features2 Widget: Displaying Contact Information -->
   <Features2
-    title="We are here to help!"
+    title="Contact Information"
+    subtitle="Please use the details below to reach us."
+    columns={2}
     items={[
+      // **REPLACE WITH YOUR ACTUAL CONTACT DETAILS**
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
+        title: 'General Inquiries',
+        description: 'For general questions about Kohaku Lab and our research.',
+        // Use a relevant icon
         icon: 'tabler:mail',
+        // Optional: Make the description a mailto link (requires careful escaping or custom component logic)
+        // description: '<a href="mailto:info@kohaku-lab.org">info@kohaku-lab.org</a>', // Be careful with HTML in descriptions
+        // Or just list the email plainly:
+        // description: 'Email: info@kohaku-lab.org',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: 'Collaborations',
+        description: 'Interested in partnering with us? Reach out to our collaboration team.',
+        icon: 'tabler:users-group', // Icon for collaboration
+        // description: 'Email: partnerships@kohaku-lab.org',
       },
+      {
+        title: 'Media Inquiries',
+        description: 'For press and media-related questions.',
+        icon: 'tabler:news', // Icon for news/media
+        // description: 'Email: media@kohaku-lab.org',
+      },
+      {
+        title: 'Lab Address',
+        description: '123 Innovation Drive, Suite 456, Metropolis, CA 90210', // **REPLACE ADDRESS**
+        icon: 'tabler:map-pin', // Icon for location
+      },
+      // Example for Social Link (optional)
+      {
+        title: 'Follow Us on X',
+        description: '@KohakuLabAI', // **REPLACE HANDLE**
+        icon: 'tabler:brand-x',
+        // Optional: Add a CallToAction to link directly
+        // callToAction: { text: 'Go to X', href: 'https://twitter.com/KohakuLabAI', target: '_blank', variant: 'link' }
+      },
+      // Add other relevant contact points (e.g., specific department emails, phone if applicable)
     ]}
+    classes={{
+      // Optional: Add custom classes for styling if needed
+      container: 'max-w-4xl mx-auto', // Center the contact info perhaps
+      panel: 'p-6 rounded-md border dark:border-slate-700', // Add some styling
+    }}
   />
 </Layout>

@@ -1,0 +1,85 @@
+---
+// src/pages/research/projects/[...slug].astro
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Content from '~/components/widgets/Content.astro'; // Example widget for display
+// Or create a dedicated component: import ProjectDetail from '~/components/projects/ProjectDetail.astro';
+
+export const prerender = true; // Or false if you need SSR/on-demand rendering
+
+// Generate paths for each project
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug }, // The slug from the filename or frontmatter
+    props: { project }, // Pass the full project entry to the page
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { project } = Astro.props;
+const { Content: BodyContent } = await project.render(); // Render MDX body
+
+const metadata = {
+  title: `${project.data.title} - Project | Kohaku Lab`,
+  description:
+    project.data.excerpt || `Details about the ${project.data.title} project at Kohaku Lab.`,
+  // Add OpenGraph image specific to the project if available
+  // openGraph: {
+  //   images: project.data.image ? [{ url: project.data.image }] : [],
+  // }
+};
+---
+
+<Layout metadata={metadata}>
+  {/* Use a specific Project Detail component or generic widgets */}
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 font-heading">{project.data.title}</h1>
+    {
+      project.data.excerpt && (
+        <p class="text-xl text-muted dark:text-slate-400 mb-8">{project.data.excerpt}</p>
+      )
+    }
+
+    {/* Optional: Display project image using Content widget or Image directly */}
+    {
+      project.data.image && (
+        <Content
+          image={{ src: project.data.image, alt: `${project.data.title} illustration` }}
+          isReversed
+        >
+          <Fragment slot="content">
+            {/* Placeholder for key details maybe */}
+            <h3 class="text-2xl font-semibold mb-2">Project Overview</h3>
+            <ul class="list-disc list-inside space-y-1 mb-6">
+              {project.data.status && (
+                <li>
+                  <strong>Status:</strong> {project.data.status}
+                </li>
+              )}
+              {project.data.team && (
+                <li>
+                  <strong>Team:</strong> {project.data.team.join(', ')}
+                </li>
+              )}
+              {/* Add more key details from your schema */}
+            </ul>
+          </Fragment>
+        </Content>
+      )
+    }
+
+    {/* Render the main Markdown/MDX content */}
+    <div class="prose dark:prose-invert prose-lg mt-8">
+      <BodyContent />
+    </div>
+
+    {/* Optional: Link back to projects list */}
+    <div class="mt-12">
+      <a href="/research/projects" class="text-primary dark:text-blue-400 hover:underline"
+        >← Back to Projects</a
+      >
+    </div>
+  </section>
+</Layout>

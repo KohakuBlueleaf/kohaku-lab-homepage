@@ -1,72 +1,103 @@
+# src/config.yaml
+# Modified for Kohaku Lab
+
 site:
+  # Your Lab's Name
   name: Kohaku Lab
+  # Your Lab's Live URL (Update when deployed)
   site: 'https://kohaku-lab.org'
+  # Base path (usually '/')
   base: '/'
+  # Astro default is false, usually preferred. Set to true if you need trailing slashes.
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  # Optional: Add your Google Site Verification ID for Google Search Console
+  googleSiteVerificationId: false # or 'YOUR_GOOGLE_VERIFICATION_ID'
 
-# Default SEO metadata
+# Default SEO metadata used across the site
 metadata:
   title:
+    # Default title for pages that don't override it
     default: Kohaku Lab
+    # Template for page titles (%s will be replaced by the page title)
     template: '%s — Kohaku Lab'
-  description: "Kohaku Lab description."
+  # Default meta description (important for SEO) - **UPDATE THIS**
+  description: 'Kohaku Lab pioneers cutting-edge research and development in Artificial Intelligence, focusing on creating intelligent systems that solve real-world problems and drive innovation.'
+  # Default robots directive (allow indexing by default)
   robots:
     index: true
     follow: true
+  # OpenGraph metadata for social sharing (Facebook, LinkedIn, etc.)
   openGraph:
+    # Should match site.name
     site_name: Kohaku Lab
+    # Default image for sharing links - **REPLACE THIS IMAGE**
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/default.png' # Path relative to src/
         width: 1200
         height: 628
-    type: website
+    type: website # Usually 'website' for home, 'article' for posts
+  # Twitter card metadata - **UPDATE HANDLES or remove**
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@KohakuLabAI' # Replace with your lab's X/Twitter handle
+    site: '@KohakuLabAI' # Replace with your lab's X/Twitter handle
     cardType: summary_large_image
 
+# Internationalization settings
 i18n:
-  language: en
-  textDirection: ltr
+  language: en # Default language
+  textDirection: ltr # Left-to-Right text direction
 
+# Configure specific applications like the Blog/News section
 apps:
-  blog:
-    isEnabled: true
-    postsPerPage: 6
+  blog: # Renamed to handle 'News'
+    isEnabled: true # Enable the News section
+    postsPerPage: 6 # How many news items per page
+    isRelatedPostsEnabled: true # Show related news items?
+    relatedPostsCount: 4 # How many related items to show
 
+    # Settings for individual news posts
     post:
-      isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      isEnabled: true # Allow individual news pages
+      # Permalink structure for news items - **IMPORTANT**
+      permalink: '/news/%slug%' # URL like kohaku-lab.org/news/your-post-slug
       robots:
         index: true
+        follow: true
 
+    # Settings for the main news listing page
     list:
-      isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      isEnabled: true # Enable the main /news page
+      pathname: 'news' # The base URL path for the news section
       robots:
         index: true
+        follow: true
 
+    # Disable Categories and Tags for News unless needed
     category:
-      isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
-      robots:
-        index: true
-
-    tag:
-      isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      isEnabled: false
+      pathname: 'category' # Path if enabled: /news/category/your-category
       robots:
         index: false
+        follow: true
 
-    isRelatedPostsEnabled: true
-    relatedPostsCount: 4
+    tag:
+      isEnabled: false
+      pathname: 'tag' # Path if enabled: /news/tag/your-tag
+      robots:
+        index: false
+        follow: true
 
+# Analytics configuration
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      # Add your Google Analytics ID (G-XXXXXXXXXX) or keep null
+      id: null
+      # Use Partytown for better performance (recommended)
+      partytown: true
 
+# User Interface settings
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  # Theme behavior: 'system' respects OS, 'light' or 'dark' forces theme
+  theme: 'system'

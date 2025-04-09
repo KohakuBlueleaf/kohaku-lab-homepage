@@ -1,0 +1,54 @@
+---
+// src/pages/research/projects/index.astro
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Grid from '~/components/blog/Grid.astro'; // Can reuse blog grid/list components or create specific ones
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Our Projects - Kohaku Lab',
+  description: 'Explore the ongoing and completed research projects at Kohaku Lab.',
+};
+
+// Fetch project data from content collection
+// NOTE: Assumes you create a 'projects' collection in src/content/
+// and define its schema in src/content/config.ts
+const projects = (await getCollection('projects')) // Ensure collection name matches
+  .sort((a, b) =>
+    /* Add sorting logic if needed, e.g., by date or title */ a.data.title.localeCompare(
+      b.data.title
+    )
+  )
+  .map((project) => ({
+    // Map to the format expected by the Grid/List component
+    // Adjust fields based on your project schema and GridItem/ListItem component props
+    id: project.id,
+    slug: project.slug,
+    permalink: getPermalink(`/research/projects/${project.slug}`, 'page'), // Link to detail page
+    title: project.data.title,
+    excerpt: project.data.excerpt || 'Learn more about this project.', // Add an excerpt field to your schema
+    image: project.data.image || '~/assets/images/default-project.png', // Add image field, provide default
+    publishDate: project.data.startDate || new Date().toISOString(), // Add publishDate field
+    // Add publishDate, category, tags if reusing blog components and schema matches
+  }));
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Research"
+    title="Kohaku Lab Projects"
+    subtitle="Discover the innovative research initiatives undertaken by our team."
+  />
+
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    {
+      projects.length > 0 ? (
+        <Grid posts={projects} />
+      ) : (
+        <p class="text-center text-muted dark:text-slate-400">No projects found.</p>
+      )
+    }
+    <!-- Add pagination if needed -->
+  </section>
+</Layout>

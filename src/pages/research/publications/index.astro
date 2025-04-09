@@ -1,0 +1,73 @@
+---
+// src/pages/research/publications/index.astro
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+// You'll likely need a custom component to display publications properly
+// For now, using a simple list as a placeholder
+
+const metadata = {
+  title: 'Publications - Kohaku Lab',
+  description: 'Browse publications and research papers from the team at Kohaku Lab.',
+};
+
+// Fetch publication data from content collection
+// NOTE: Assumes you create a 'publications' collection in src/content/
+// and define its schema in src/content/config.ts
+const publications = (await getCollection('publications')) // Ensure collection name matches
+  .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf()); // Sort by date desc
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Research"
+    title="Kohaku Lab Publications"
+    subtitle="Access our latest research findings and contributions to the AI community."
+  />
+
+  <section
+    class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl prose dark:prose-invert prose-lg"
+  >
+    {
+      publications.length > 0 ? (
+        <ul class="space-y-6">
+          {publications.map((pub) => (
+            <li class="publication-item">
+              {' '}
+              {/* Add styling class */}
+              <h3 class="text-xl font-semibold mb-1">{pub.data.title}</h3>
+              <p class="text-sm text-muted dark:text-slate-400 mb-1">
+                {/* Format authors, journal, date etc. based on your schema */}
+                <em>{pub.data.authors?.join(', ')}</em>
+                {pub.data.journal && ` - ${pub.data.journal}`}
+                {pub.data.publishDate && ` (${new Date(pub.data.publishDate).getFullYear()})`}
+              </p>
+              {/* Optional: Add excerpt */}
+              {/* {pub.data.excerpt && <p class="text-base mb-2">{pub.data.excerpt}</p>} */}
+              {/* Link to paper */}
+              {pub.data.url && (
+                <a
+                  href={pub.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary dark:text-blue-400 hover:underline"
+                >
+                  Read Paper → {/* Or PDF, Link, etc. */}
+                </a>
+              )}
+              {/* Link to project page if relevant */}
+              {/* {pub.data.relatedProjectSlug && (
+                <a href={getPermalink(`/research/projects/${pub.data.relatedProjectSlug}`)} class="ml-4 text-sm text-secondary dark:text-blue-300 hover:underline">
+                    Related Project →
+                </a>
+             )} */}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-center text-muted dark:text-slate-400">No publications found.</p>
+      )
+    }
+    <!-- Add pagination if needed -->
+  </section>
+</Layout>
